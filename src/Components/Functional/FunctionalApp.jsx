@@ -9,13 +9,9 @@ export function FunctionalApp() {
 
   return (
     <>
-      {/* {nameFish.map((eachAnswer, index) => (
-        <h3 key={index}>{eachAnswer}</h3>
-      ))} */}
-      {nameFish.length === 0 ? "Empty" : nameFish.length}
       {!isDone() && <FunctionalScoreBoard passNameFish={nameFish} />}
       {!isDone() && <FunctionalGameBoard handleNameFish={setNameFish} />}
-      {isDone() && <FunctionalFinalScore />}
+      {isDone() && <FunctionalFinalScore passNameFish={nameFish} />}
     </>
   );
 }
