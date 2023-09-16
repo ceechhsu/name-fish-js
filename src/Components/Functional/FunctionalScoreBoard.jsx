@@ -10,18 +10,13 @@ const getCounts = (arrA) => {
   let correct = 0;
   let incorrect = 0;
   for (let i = 0; i < arrA.length; i++) {
-    if (arrA[i] === correctAnswer[i]) {
-      correct++;
-    } else {
-      incorrect++;
-    }
+    arrA[i] === correctAnswer[i] ? correct++ : incorrect++;
   }
-  console.log(`Correct #: ${correct}`);
   return [correct, incorrect];
 };
 
 const updateAnswersLeft = (arrA) => {
-  let answersLeft = correctAnswer;
+  answersLeft = correctAnswer;
   return answersLeft.filter((item, index) => item !== arrA[index]);
 };
 
