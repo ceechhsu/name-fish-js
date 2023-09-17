@@ -21,6 +21,7 @@ const updateAnswersLeft = (arrA) => {
 };
 
 export function FunctionalScoreBoard({ passNameFish }) {
+  // {passNameFish} contain the state of nameFish from parent
   let answerLength = passNameFish.length;
   if (answerLength !== 0) {
     [correctCount, incorrectCount] = getCounts(passNameFish);

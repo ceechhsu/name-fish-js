@@ -2,6 +2,8 @@ import "./styles/final-score.css";
 const correctAnswer = ["trout", "salmon", "tuna", "shark"];
 
 export const FunctionalFinalScore = ({ passNameFish }) => {
+  // {passNameFish} contains the arrays of fish names from the user.
+  // compare it with the correctAnswer to calculate correctCount and totalCount.
   const correctCount = passNameFish.filter(
     (answer, index) => answer === correctAnswer[index]
   ).length;

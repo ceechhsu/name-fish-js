@@ -22,6 +22,8 @@ const initialFishes = [
 ];
 
 export function FunctionalGameBoard({ handleNameFish }) {
+  // {handleNameFish} is the state method from parent
+  // handleOnSubmit will append to the parent's state of nameFish array.
   const [count, setCount] = useState(0);
   const [fishNameInput, setFishNameInput] = useState("");
   const nextFishToName = initialFishes[count];

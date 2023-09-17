@@ -9,9 +9,14 @@ export function FunctionalApp() {
 
   return (
     <>
-      {!isDone() && <FunctionalScoreBoard passNameFish={nameFish} />}
-      {!isDone() && <FunctionalGameBoard handleNameFish={setNameFish} />}
-      {isDone() && <FunctionalFinalScore passNameFish={nameFish} />}
+      {isDone() ? (
+        <FunctionalFinalScore passNameFish={nameFish} />
+      ) : (
+        <>
+          <FunctionalScoreBoard passNameFish={nameFish} />
+          <FunctionalGameBoard handleNameFish={setNameFish} />
+        </>
+      )}
     </>
   );
 }
