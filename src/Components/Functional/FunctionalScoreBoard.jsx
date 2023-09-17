@@ -29,7 +29,6 @@ export function FunctionalScoreBoard({ passNameFish }) {
 
   return (
     <div id="score-board">
-      {console.log(`This is passNameFish: ${answerLength}`)}
       <div>Incorrect 🔻: {incorrectCount}</div>
       <div id="choices-left">
         {answersLeft.map((answer) => (
