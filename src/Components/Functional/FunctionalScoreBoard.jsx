@@ -17,7 +17,9 @@ const getCounts = (arrA) => {
 
 const updateAnswersLeft = (arrA) => {
   answersLeft = correctAnswer;
-  return answersLeft.filter((item, index) => item !== arrA[index]);
+  // return answersLeft.filter((item, index) => item !== arrA[index]);
+  // const filteredArrayA = arrayA.filter((itemA) => !arrayB.includes(itemA));
+  return answersLeft.filter((itemA) => !arrA.includes(itemA));
 };
 
 export function FunctionalScoreBoard({ passNameFish }) {

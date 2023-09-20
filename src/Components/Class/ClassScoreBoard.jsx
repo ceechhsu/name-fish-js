@@ -7,7 +7,7 @@ const correctAnswers = ["trout", "salmon", "tuna", "shark"];
 export class ClassScoreBoard extends Component {
   updateAnswersLeft = (arrA) => {
     answersLeft = correctAnswers;
-    return answersLeft.filter((item, index) => item !== arrA[index]);
+    return answersLeft.filter((itemA) => !arrA.includes(itemA));
   };
 
   render() {
