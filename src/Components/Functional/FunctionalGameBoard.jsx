@@ -2,7 +2,7 @@ import "./styles/game-board.css";
 import { Images } from "../../assets/Images";
 import { useState } from "react";
 
-const initialFishes = [
+export const initialFishes = [
   {
     name: "trout",
     url: Images.trout,
