@@ -1,23 +1,25 @@
 import { Component } from "react";
 import "./styles/score-board.css";
 
-let answersLeft = ["trout", "salmon", "tuna", "shark"];
 const correctAnswers = ["trout", "salmon", "tuna", "shark"];
 
 export class ClassScoreBoard extends Component {
-  updateAnswersLeft = (arrA) => {
-    answersLeft = correctAnswers;
-    return answersLeft.filter((itemA) => !arrA.includes(itemA));
-  };
-
   render() {
-    if (this.props.correctCount + this.props.incorrectCount > 0) {
-      answersLeft = this.updateAnswersLeft(this.props.fishNames);
-    }
+    const { passNameFish } = this.props;
+
+    const correctCount = passNameFish.filter(
+      (answer, index) => answer === correctAnswers[index]
+    ).length;
+
+    const incorrectCount = passNameFish.length - correctCount;
+
+    const answersLeft = correctAnswers.filter(
+      (answer) => !passNameFish.includes(answer)
+    );
 
     return (
       <div id="score-board">
-        <div>Incorrect 🔻: {this.props.incorrectCount}</div>
+        <div>Incorrect 🔻: {incorrectCount}</div>
         <div id="choices-left">
           {answersLeft.map((answer) => (
             <div key={answer} className="choice">
@@ -25,7 +27,7 @@ export class ClassScoreBoard extends Component {
             </div>
           ))}
         </div>
-        <div>Correct ✅: {this.props.correctCount}</div>
+        <div>Correct ✅: {correctCount}</div>
       </div>
     );
   }

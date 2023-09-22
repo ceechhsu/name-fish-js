@@ -2,7 +2,7 @@ import { Component } from "react";
 import "./styles/game-board.css";
 import { Images } from "../../assets/Images";
 
-const initialFishes = [
+export const initialFishes = [
   {
     name: "trout",
     url: Images.trout,
@@ -27,21 +27,14 @@ export class ClassGameBoard extends Component {
     fishNameInput: "",
   };
 
-  isCorrect = () => {
-    return initialFishes[this.state.count].name === this.state.fishNameInput;
-  };
-
   handleOnSubmit = (e) => {
     e.preventDefault();
-    this.props.handleFishNames(this.state.fishNameInput);
-    this.isCorrect()
-      ? this.props.handleCount("correct")
-      : this.props.handleCount("incorrect");
-    this.setState({ fishNameInput: "" });
-
-    if (this.state.count < initialFishes.length - 1) {
-      this.setState({ count: this.state.count + 1 });
-    }
+    const { fishNameInput, count } = this.state;
+    this.props.handleFishNames(fishNameInput);
+    this.setState({
+      fishNameInput: "",
+      count: count < initialFishes.length - 1 ? count + 1 : count,
+    });
   };
 
   handleOnChange = (e) => {

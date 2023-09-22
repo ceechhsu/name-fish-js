@@ -1,24 +1,11 @@
 import { Component } from "react";
 import { ClassScoreBoard } from "./ClassScoreBoard";
-import { ClassGameBoard } from "./ClassGameBoard";
+import { ClassGameBoard, initialFishes } from "./ClassGameBoard";
 import { ClassFinalScore } from "./ClassFinalScore";
 
 export class ClassApp extends Component {
   state = {
-    incorrectCount: 0,
-    correctCount: 0,
     fishNames: [],
-  };
-
-  isDone = () =>
-    this.state.correctCount + this.state.incorrectCount === 4 ? true : false;
-
-  incrementCount = (correct) => {
-    this.setState((prevState) => {
-      return correct === "correct"
-        ? { correctCount: prevState.correctCount + 1 }
-        : { incorrectCount: prevState.incorrectCount + 1 };
-    });
   };
 
   inputFishNames = (newName) => {
@@ -28,24 +15,15 @@ export class ClassApp extends Component {
   };
 
   render() {
+    const isDone = this.state.fishNames.length === initialFishes.length;
     return (
       <>
-        {this.isDone() ? (
-          <ClassFinalScore
-            correctCount={this.state.correctCount}
-            incorrectCount={this.state.incorrectCount}
-          />
+        {isDone ? (
+          <ClassFinalScore passNameFish={this.state.fishNames} />
         ) : (
           <>
-            <ClassScoreBoard
-              correctCount={this.state.correctCount}
-              incorrectCount={this.state.incorrectCount}
-              fishNames={this.state.fishNames}
-            />
-            <ClassGameBoard
-              handleCount={this.incrementCount}
-              handleFishNames={this.inputFishNames}
-            />
+            <ClassScoreBoard passNameFish={this.state.fishNames} />
+            <ClassGameBoard handleFishNames={this.inputFishNames} />
           </>
         )}
       </>
